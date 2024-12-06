@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="addon">
+  <id>org.kde.KStyle.Klassy</id>
+  <extends>org.kde.Platform</extends>
+  <metadata_license>CC0-1.0</metadata_license>
+  <name>Klassy KStyle</name>
+  <summary>Klassy Decoration </summary>
+  <description>
+    <p>Klassy is a highly customizable binary Window Decoration, Application Style and Global Theme plugin for recent versions of the KDE Plasma desktop.</p>
+  </description>
+  <url type="homepage">https://github.com/paulmcauley/klassy</url>
+  <releases>
+    <release version="6.2.breeze6.2.1" date="2024-10-09"/>
+  </releases>
+</component>

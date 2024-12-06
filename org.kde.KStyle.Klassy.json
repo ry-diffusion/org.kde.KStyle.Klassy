@@ -1,0 +1,54 @@
+{
+    "id": "org.kde.KStyle.Klassy",
+    "branch": "6.7",
+    "runtime": "org.kde.Platform",
+    "build-extension": true,
+    "sdk": "org.kde.Sdk",
+    "runtime-version": "6.7",
+    "separate-locales": false,
+    "appstream-compose": false,
+    "build-options": {
+        "prefix": "/usr/share/runtime/lib/plugins/Klassy"
+    },
+    "modules": [
+        {
+            "name": "klassy",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/paulmcauley/klassy.git",
+                    "tag": "plasma6.2",
+                    "commit": "58c6ad5c51cd204424d4a326d1a053893f5fde92",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/paulmcauley/klassy/releases/latest",
+                        "tag-query": ".tag_name",
+                        "version-query": "$tag | sub(\"^[vV]\"; \"\")",
+                        "timestamp-query": ".published_at"
+                    }
+                }
+            ],
+            "config-opts": [
+                "-DBUILD_QT5=OFF",
+                "-DWITH_DECORATIONS=OFF",
+                "-DBUILD_TESTING=OFF",
+                "-DKDE_INSTALL_QTPLUGINDIR=/usr/share/runtime/lib/plugins/Klassy"
+            ]
+        },
+        {
+            "name": "appdata",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -Dm644 ${FLATPAK_ID}.appdata.xml -t ${FLATPAK_DEST}/share/appdata/",
+                "appstream-compose --basename=${FLATPAK_ID} --prefix=${FLATPAK_DEST} --origin=flatpak ${FLATPAK_ID}"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "org.kde.KStyle.Klassy.appdata.xml"
+                }
+            ]
+        }
+    ]
+}
